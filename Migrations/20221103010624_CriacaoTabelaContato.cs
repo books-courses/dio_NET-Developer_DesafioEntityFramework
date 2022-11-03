@@ -1,11 +1,12 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
 namespace TrilhaApiDesafio.Migrations
 {
-    public partial class Initial : Migration
+    public partial class CriacaoTabelaContato : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,12 +14,12 @@ namespace TrilhaApiDesafio.Migrations
                 name: "Tarefas",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Titulo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Descricao = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Data = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Titulo = table.Column<string>(type: "text", nullable: true),
+                    Descricao = table.Column<string>(type: "text", nullable: true),
+                    Data = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Status = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
